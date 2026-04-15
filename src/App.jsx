@@ -587,13 +587,6 @@ function CoachScreen(){
   },[visible]);
 
   useEffect(()=>{
-    if(visible>0 && visible<=msgs.length){
-      const msg=msgs[visible-1];
-      if(msg.t==="ai") speak(msg.text);
-    }
-  },[visible]);
-
-  useEffect(()=>{
     if(chatRef.current) chatRef.current.scrollTop=chatRef.current.scrollHeight;
   },[visible]);
 
@@ -629,10 +622,20 @@ function CoachScreen(){
               </div>
               <div style={{padding:"10px 14px",borderRadius:"18px 18px 18px 4px",background:C.card2,border:`1px solid ${C.border}`}}>
                 <div style={{fontSize:13,color:C.white,lineHeight:1.6}}>{m.text}</div>
-                {m.src&&<div style={{display:"flex",alignItems:"center",gap:4,marginTop:5,paddingTop:5,borderTop:`1px solid ${C.border}40`}}>
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke={C.blue} strokeWidth="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-                  <span style={{fontSize:9,color:C.blue,cursor:"pointer",textDecoration:"underline",textDecorationColor:`${C.blue}60`}}>{m.src}</span>
-                </div>}
+                <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:6,gap:8}}>
+                  {m.src&&<div style={{display:"flex",alignItems:"center",gap:4,paddingTop:5,borderTop:`1px solid ${C.border}40`,flex:1}}>
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke={C.blue} strokeWidth="2.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+                    <span style={{fontSize:9,color:C.blue,cursor:"pointer",textDecoration:"underline",textDecorationColor:`${C.blue}60`}}>{m.src}</span>
+                  </div>}
+                  <button onClick={()=>speak(m.text)} style={{marginLeft:"auto",marginTop:m.src?0:4,display:"flex",alignItems:"center",gap:3,background:"none",border:"none",cursor:"pointer",padding:"2px 0",opacity:0.6}}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={C.teal} strokeWidth="2" strokeLinecap="round">
+                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                      <path d="M19.07 4.93a10 10 0 0 1 0 14.14" opacity=".5"/>
+                    </svg>
+                    <span style={{fontSize:9,color:C.teal,fontWeight:600}}>Hear</span>
+                  </button>
+                </div>
               </div>
             </div>
           );
