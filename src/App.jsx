@@ -93,7 +93,7 @@ const Phone = ({ children }) => (
       background: "linear-gradient(145deg, #2a2a2c, #1c1c1e)",
       borderRadius: 54,
       padding: 10,
-      boxShadow: "0 0 0 1px #4a4a4c, 0 40px 120px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.08)",
+      boxShadow: "none",
       position: "relative",
     }}>
       {/* Screen */}
@@ -1063,19 +1063,9 @@ export default function SocialSensePrototype(){
   return (
     <>
       <style>{css}</style>
-      <div style={{minHeight:"100vh",background:"#ffffff",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"40px 20px",fontFamily:"'DM Sans',-apple-system,sans-serif"}}>
+      <div style={{minHeight:"100vh",background:"#ffffff",display:"flex",alignItems:"center",justifyContent:"center",padding:"40px 20px",fontFamily:"'DM Sans',-apple-system,sans-serif"}}>
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-        <div style={{textAlign:"center",marginBottom:28}}>
-          <div style={{fontSize:11,fontWeight:700,color:C.teal,letterSpacing:".2em",textTransform:"uppercase"}}>SocialSense AI</div>
-          <div style={{fontSize:22,fontWeight:800,color:C.white,marginTop:4}}>Interactive App Prototype</div>
-          <div style={{fontSize:13,color:C.textMuted,marginTop:4}}>Tap the navigation bar to explore each screen</div>
-        </div>
         <Phone>{content}<TabBar active={showSettings?"profile":screen} onNav={nav}/></Phone>
-        <div style={{display:"flex",gap:6,marginTop:20,flexWrap:"wrap",justifyContent:"center"}}>
-          {[{l:"Home",id:"home"},{l:"Match",id:"match"},{l:"Review",id:"review"},{l:"Coach",id:"ai"},{l:"Friends",id:"friends"},{l:"Profile",id:"profile"}].map(s=>(
-            <button key={s.id} onClick={()=>nav(s.id)} style={{padding:"7px 14px",borderRadius:10,background:screen===s.id&&!showSettings?`${C.teal}20`:"transparent",border:`1px solid ${screen===s.id&&!showSettings?C.teal+"40":C.border}`,cursor:"pointer",fontSize:11,fontWeight:600,color:screen===s.id&&!showSettings?C.teal:C.textMuted}}>{s.l}</button>
-          ))}
-        </div>
       </div>
     </>
   );

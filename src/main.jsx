@@ -62,7 +62,7 @@ function Root() {
           background: "linear-gradient(145deg, #2a2a2c, #1c1c1e)",
           borderRadius: 54,
           padding: 10,
-          boxShadow: "0 0 0 1px #4a4a4c, 0 40px 120px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.08)",
+          boxShadow: "none",
           position: "relative",
         }}>
           {/* Screen */}
