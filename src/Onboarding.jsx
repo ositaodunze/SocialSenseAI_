@@ -9,20 +9,6 @@ const C = {
   border: "#1E2A45", red: "#FF4D6D", green: "#22C55E",
 };
 
-const INTERESTS = [
-  "Entrepreneurship","Leadership","Podcasts","Basketball",
-  "Cooking","Tech","Music","Art","Travel","Fitness",
-  "Fashion","Gaming","Film","Faith","Mental Health","Career",
-];
-
-const BLOCKERS = [
-  "I don't know what to say",
-  "I'm scared of being judged",
-  "I get nervous and freeze",
-  "I overthink after the fact",
-  "I can start but can't keep it going",
-  "Nothing really, I'm just here to improve",
-];
 
 export default function Onboarding({ onComplete }) {
   const [step, setStep] = useState(0); // 0=auth, 1-5=questions, 6=done
@@ -38,29 +24,16 @@ export default function Onboarding({ onComplete }) {
   // Questionnaire answers
   const [answers, setAnswers] = useState({
     anxiety_level: null,
-    conversation_start_freq: null,
-    post_social_feeling: null,
-    friend_difficulty: null,
-    close_friend_count: null,
-    blockers: [],
-    interests: [],
-    goal: null,
-    major: "",
-    gender: null,
+    conversation_ease: null,
+    social_difficulty: null,
+    conversation_slowdown: null,
+    approach_mindset: null,
+    post_social: null,
+    help_goal: null,
   });
 
-  const totalSteps = 6;
+  const totalSteps = 7;
   const progress = Math.round((step / totalSteps) * 100);
-
-  const toggle = (field, val) => {
-    setAnswers(prev => {
-      const arr = prev[field];
-      return {
-        ...prev,
-        [field]: arr.includes(val) ? arr.filter(x => x !== val) : [...arr, val],
-      };
-    });
-  };
 
   const handleAuth = async () => {
   setLoading(true)
@@ -138,7 +111,7 @@ export default function Onboarding({ onComplete }) {
   if (step === 0) return (
     <Screen>
       <div style={{ textAlign: "center", marginBottom: 32 }}>
-        <div style={{ fontSize: 32 }}>🧠</div>
+        <div className="emoji" style={{ fontSize: 32 }}>🧠</div>
         <div style={{ fontSize: 26, fontWeight: 800, color: C.white, marginTop: 8 }}>SocialSense AI</div>
         <div style={{ fontSize: 13, color: C.textMuted, marginTop: 4 }}>Build real social confidence</div>
       </div>
@@ -170,139 +143,159 @@ export default function Onboarding({ onComplete }) {
     </Screen>
   );
 
-  // ── Step 1: Social comfort ──
+  // ── Step 1: How do you feel in social settings? ──
   if (step === 1) return (
     <Screen progress={progress}>
       <Label>How do you feel in social settings?</Label>
-      <Sub>Be honest — this helps us personalize your experience.</Sub>
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
+      <Sub>Pick the one that feels most like you.</Sub>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {[
-          { e: "😰", l: "Very uncomfortable", v: 1 },
-          { e: "😕", l: "Uncomfortable", v: 2 },
-          { e: "😐", l: "Neutral", v: 3 },
-          { e: "🙂", l: "Comfortable", v: 4 },
-          { e: "😄", l: "Very comfortable", v: 5 },
-        ].map(m => (
-          <button key={m.v} onClick={() => setAnswers(p => ({ ...p, anxiety_level: m.v }))} style={{
-            flex: 1, padding: "12px 4px", borderRadius: 14, cursor: "pointer",
-            border: `1px solid ${answers.anxiety_level === m.v ? C.teal : C.border}`,
-            background: answers.anxiety_level === m.v ? `${C.teal}18` : "transparent",
-            display: "flex", flexDirection: "column", alignItems: "center", gap: 6,
-            fontFamily: "inherit",
-          }}>
-            <span style={{ fontSize: 26 }}>{m.e}</span>
-            <span style={{ fontSize: 9, color: answers.anxiety_level === m.v ? C.teal : C.textMuted, fontWeight: 600, textAlign: "center" }}>{m.l}</span>
-          </button>
+          "I feel overwhelmed in most social settings",
+          "I often feel uncomfortable or anxious",
+          "It depends on the situation",
+          "I usually feel comfortable",
+          "I feel confident in most social settings",
+        ].map(o => (
+          <OptionRow key={o} label={o} active={answers.anxiety_level === o}
+            onClick={() => setAnswers(p => ({ ...p, anxiety_level: o }))} />
         ))}
       </div>
-
-      <div style={{ marginTop: 24 }}>
-        <div style={{ fontSize: 14, fontWeight: 700, color: C.white, marginBottom: 12 }}>How often do you start conversations first?</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {["Almost never", "Sometimes, if I know the person", "Sometimes with strangers too", "Pretty often", "All the time"].map(o => (
-            <OptionRow key={o} label={o} active={answers.conversation_start_freq === o}
-              onClick={() => setAnswers(p => ({ ...p, conversation_start_freq: o }))} />
-          ))}
-        </div>
-      </div>
-      <Next onClick={() => setStep(2)} disabled={!answers.anxiety_level || !answers.conversation_start_freq} />
+      <Next onClick={() => setStep(2)} disabled={!answers.anxiety_level} />
     </Screen>
   );
 
-  // ── Step 2: Friendship patterns ──
+  // ── Step 2: Starting conversations ──
   if (step === 2) return (
     <Screen progress={progress}>
-      <Label>How's your friendship game?</Label>
-      <Sub>No judgment — just context for your coach.</Sub>
-
-      <div style={{ fontSize: 14, fontWeight: 700, color: C.white, marginBottom: 10 }}>Do you have trouble making friends?</div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
-        {["Yes, it's really hard for me", "Sometimes — I connect but it doesn't go deeper", "Making friends is fine, keeping them is harder", "Not really"].map(o => (
-          <OptionRow key={o} label={o} active={answers.friend_difficulty === o}
-            onClick={() => setAnswers(p => ({ ...p, friend_difficulty: o }))} />
+      <Label>How easy is it for you to start a conversation with someone new?</Label>
+      <Sub>Pick the one that feels most like you.</Sub>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {[
+          "I usually avoid it",
+          "It feels really difficult",
+          "It depends on the setting",
+          "I can usually do it",
+          "I enjoy meeting new people",
+        ].map(o => (
+          <OptionRow key={o} label={o} active={answers.conversation_ease === o}
+            onClick={() => setAnswers(p => ({ ...p, conversation_ease: o }))} />
         ))}
       </div>
-
-      <div style={{ fontSize: 14, fontWeight: 700, color: C.white, marginBottom: 10 }}>How many close friends do you have right now?</div>
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        {["0", "1-2", "3-5", "5+"].map(o => (
-          <Btn key={o} label={o} small active={answers.close_friend_count === o}
-            onClick={() => setAnswers(p => ({ ...p, close_friend_count: o }))} />
-        ))}
-      </div>
-      <Next onClick={() => setStep(3)} disabled={!answers.friend_difficulty || !answers.close_friend_count} />
+      <Next onClick={() => setStep(3)} disabled={!answers.conversation_ease} />
     </Screen>
   );
 
-  // ── Step 3: Blockers ──
+  // ── Step 3: What makes social situations hard ──
   if (step === 3) return (
     <Screen progress={progress}>
-      <Label>What gets in your way?</Label>
-      <Sub>Pick up to 2 things that feel most true for you.</Sub>
+      <Label>What tends to make social situations hardest for you?</Label>
+      <Sub>No judgment — just context for your coach.</Sub>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        {BLOCKERS.map(b => (
-          <OptionRow key={b} label={b} active={answers.blockers.includes(b)}
-            onClick={() => toggle("blockers", b)} checkbox />
+        {[
+          "I worry about being judged",
+          "I never know what to say",
+          "I feel anxious or overwhelmed",
+          "I struggle to read the vibe",
+          "Social situations usually feel fine",
+        ].map(o => (
+          <OptionRow key={o} label={o} active={answers.social_difficulty === o}
+            onClick={() => setAnswers(p => ({ ...p, social_difficulty: o }))} />
         ))}
       </div>
-      <Next onClick={() => setStep(4)} disabled={answers.blockers.length === 0} />
+      <Next onClick={() => setStep(4)} disabled={!answers.social_difficulty} />
     </Screen>
   );
 
-  // ── Step 4: Interests ──
+  // ── Step 4: When conversation slows down ──
   if (step === 4) return (
     <Screen progress={progress}>
-      <Label>What are you into?</Label>
-      <Sub>We use this to match you with people you'll actually vibe with.</Sub>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-        {INTERESTS.map(i => (
-          <button key={i} onClick={() => toggle("interests", i)} style={{
-            padding: "8px 16px", borderRadius: 12, fontSize: 13, fontWeight: 600,
-            cursor: "pointer", fontFamily: "inherit",
-            border: `1px solid ${answers.interests.includes(i) ? C.teal : C.border}`,
-            background: answers.interests.includes(i) ? `${C.teal}18` : "transparent",
-            color: answers.interests.includes(i) ? C.teal : C.textMuted,
-          }}>{i}</button>
+      <Label>When a conversation starts slowing down, how do you usually feel?</Label>
+      <Sub>Be honest — there's no wrong answer here.</Sub>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {[
+          "I panic and want to leave",
+          "I get nervous and freeze up",
+          "I try, but it feels awkward",
+          "I can usually recover",
+          "I stay relaxed and keep it going",
+        ].map(o => (
+          <OptionRow key={o} label={o} active={answers.conversation_slowdown === o}
+            onClick={() => setAnswers(p => ({ ...p, conversation_slowdown: o }))} />
         ))}
       </div>
-      <Next onClick={() => setStep(5)} disabled={answers.interests.length === 0} />
+      <Next onClick={() => setStep(5)} disabled={!answers.conversation_slowdown} />
     </Screen>
   );
 
-  // ── Step 5: About you ──
+  // ── Step 5: Mindset before approaching ──
   if (step === 5) return (
     <Screen progress={progress}>
-      <Label>Almost done 🎉</Label>
-      <Sub>Just a little more info to complete your profile.</Sub>
-
-      <div style={{ fontSize: 14, fontWeight: 700, color: C.white, marginBottom: 10 }}>What are you here to work on?</div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
-        {["Meeting people on campus", "Getting better at small talk", "Building deeper friendships", "Networking / professional connections", "All of the above"].map(o => (
-          <OptionRow key={o} label={o} active={answers.goal === o}
-            onClick={() => setAnswers(p => ({ ...p, goal: o }))} />
+      <Label>Before approaching someone, what's your typical mindset?</Label>
+      <Sub>Think about the last time you wanted to talk to someone new.</Sub>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {[
+          "I talk myself out of it",
+          "I overthink everything",
+          "I hesitate, but sometimes push through",
+          "I feel a little nervous but go for it",
+          "I feel confident approaching people",
+        ].map(o => (
+          <OptionRow key={o} label={o} active={answers.approach_mindset === o}
+            onClick={() => setAnswers(p => ({ ...p, approach_mindset: o }))} />
         ))}
       </div>
+      <Next onClick={() => setStep(6)} disabled={!answers.approach_mindset} />
+    </Screen>
+  );
 
-      <Input label="What's your major / field?" value={answers.major}
-        onChange={v => setAnswers(p => ({ ...p, major: v }))} placeholder="Business, Nursing, CS..." />
+  // ── Step 6: After social interactions ──
+  if (step === 6) return (
+    <Screen progress={progress}>
+      <Label>After social interactions, what usually happens?</Label>
+      <Sub>Pick what feels most familiar.</Sub>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {[
+          "I replay everything and feel embarrassed",
+          "I second guess what I said",
+          "I think about it for a while",
+          "I move on pretty quickly",
+          "I usually feel good afterward",
+        ].map(o => (
+          <OptionRow key={o} label={o} active={answers.post_social === o}
+            onClick={() => setAnswers(p => ({ ...p, post_social: o }))} />
+        ))}
+      </div>
+      <Next onClick={() => setStep(7)} disabled={!answers.post_social} />
+    </Screen>
+  );
 
-      <div style={{ fontSize: 14, fontWeight: 700, color: C.white, marginBottom: 10, marginTop: 16 }}>How do you identify?</div>
-      <div style={{ display: "flex", gap: 8 }}>
-        {["Man", "Woman", "Non-binary", "Prefer not to say"].map(g => (
-          <Btn key={g} label={g} small active={answers.gender === g}
-            onClick={() => setAnswers(p => ({ ...p, gender: g }))} />
+  // ── Step 7: What would you like help with ──
+  if (step === 7) return (
+    <Screen progress={progress}>
+      <Label>What would you most like SocialSense to help you with?</Label>
+      <Sub>This shapes everything your coach focuses on.</Sub>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {[
+          "Starting conversations more easily",
+          "Feeling calmer in the moment",
+          "Knowing what to say next",
+          "Reading social cues better",
+          "Building long-term confidence",
+        ].map(o => (
+          <OptionRow key={o} label={o} active={answers.help_goal === o}
+            onClick={() => setAnswers(p => ({ ...p, help_goal: o }))} />
         ))}
       </div>
 
       {error && <div style={{ color: C.red, fontSize: 12, marginTop: 8 }}>{error}</div>}
 
-      <button onClick={handleFinish} disabled={loading || !answers.goal} style={{
+      <button onClick={handleFinish} disabled={loading || !answers.help_goal} style={{
         width: "100%", padding: 16, borderRadius: 16, marginTop: 24,
-        background: !answers.goal ? C.border : `linear-gradient(135deg,${C.teal},${C.tealDark})`,
-        border: "none", cursor: !answers.goal ? "not-allowed" : "pointer",
+        background: !answers.help_goal ? C.border : `linear-gradient(135deg,${C.teal},${C.tealDark})`,
+        border: "none", cursor: !answers.help_goal ? "not-allowed" : "pointer",
         fontSize: 16, fontWeight: 700,
-        color: !answers.goal ? C.textMuted : C.bg, fontFamily: "inherit",
-      }}>{loading ? "Saving..." : "Let's Go 🚀"}</button>
+        color: !answers.help_goal ? C.textMuted : C.bg, fontFamily: "inherit",
+      }}>{loading ? "Saving..." : "Let's Go"}</button>
     </Screen>
   );
 
