@@ -1070,11 +1070,6 @@ export default function SocialSensePrototype(){
           <div style={{fontSize:13,color:C.textMuted,marginTop:4}}>Tap the navigation bar to explore each screen</div>
         </div>
         <Phone>{content}<TabBar active={showSettings?"profile":screen} onNav={nav}/></Phone>
-        <div style={{display:"flex",gap:6,marginTop:20,flexWrap:"wrap",justifyContent:"center"}}>
-          {[{l:"Home",id:"home"},{l:"Match",id:"match"},{l:"Review",id:"review"},{l:"Coach",id:"ai"},{l:"Friends",id:"friends"},{l:"Profile",id:"profile"}].map(s=>(
-            <button key={s.id} onClick={()=>nav(s.id)} style={{padding:"7px 14px",borderRadius:10,background:screen===s.id&&!showSettings?`${C.teal}20`:"transparent",border:`1px solid ${screen===s.id&&!showSettings?C.teal+"40":C.border}`,cursor:"pointer",fontSize:11,fontWeight:600,color:screen===s.id&&!showSettings?C.teal:C.textMuted}}>{s.l}</button>
-          ))}
-        </div>
       </div>
     </>
   );
