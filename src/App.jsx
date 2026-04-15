@@ -548,6 +548,7 @@ function CoachScreen(){
   const [visible,setVisible]=useState(0);
   const [inputVal,setInputVal]=useState("");
   const [focused,setFocused]=useState(false);
+  const [speaking,setSpeaking]=useState(false);
   const chatRef=useRef(null);
 
   const msgs=[
@@ -559,8 +560,23 @@ function CoachScreen(){
     {t:"user",text:"Yeah I guess I did keep it going"},
     {t:"ai",text:"Next time, ask one follow-up question early. Like 'how did that start for you?' Gets them talking and takes pressure off.",src:"Conversational Flow Theory · Huang et al., 2017"},
     {t:"user",text:"Okay that makes sense"},
-    {t:"ai",text:"You're improving — convos went from 4 min to 12 min this month. \ud83d\udcc8 What felt hardest?"},
+    {t:"ai",text:"You're improving — convos went from 4 min to 12 min this month. 📈 What felt hardest?"},
   ];
+
+  const speak = (text) => {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.rate = 0.95;
+    utt.pitch = 1.05;
+    utt.volume = 1;
+    const voices = window.speechSynthesis.getVoices();
+    const preferred = voices.find(v => v.name.includes("Samantha") || v.name.includes("Karen") || v.name.includes("Google US English"));
+    if (preferred) utt.voice = preferred;
+    utt.onstart = () => setSpeaking(true);
+    utt.onend = () => setSpeaking(false);
+    window.speechSynthesis.speak(utt);
+  };
 
   useEffect(()=>{
     if(visible<msgs.length){
@@ -571,8 +587,17 @@ function CoachScreen(){
   },[visible]);
 
   useEffect(()=>{
+    if(visible>0 && visible<=msgs.length){
+      const msg=msgs[visible-1];
+      if(msg.t==="ai") speak(msg.text);
+    }
+  },[visible]);
+
+  useEffect(()=>{
     if(chatRef.current) chatRef.current.scrollTop=chatRef.current.scrollHeight;
   },[visible]);
+
+  useEffect(()=>{ return()=>{ window.speechSynthesis?.cancel(); }; },[]);
 
 
 
@@ -581,12 +606,16 @@ function CoachScreen(){
       <div style={{padding:"0 20px",flexShrink:0}}>
         <SB/>
         <div style={{display:"flex",alignItems:"center",gap:10,paddingBottom:12,borderBottom:`1px solid ${C.border}30`}}>
-          <div style={{width:36,height:36,borderRadius:18,background:`linear-gradient(135deg,${C.teal}30,${C.purple}30)`,border:`1.5px solid ${C.teal}40`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+          <div style={{width:36,height:36,borderRadius:18,background:`linear-gradient(135deg,${C.teal}30,${C.purple}30)`,border:`1.5px solid ${speaking?C.teal:"rgba(6,214,160,.4)"}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,boxShadow:speaking?`0 0 12px ${C.teal}60`:"none",transition:"all .3s"}}>
             <BrainIcon color={C.teal} size={18}/>
           </div>
           <div>
             <div style={{fontSize:15,fontWeight:700,color:C.white}}>Confidence Coaching</div>
-            <div style={{fontSize:10,color:C.teal,fontWeight:600}}>● Active now</div>
+            <div style={{fontSize:10,color:C.teal,fontWeight:600,display:"flex",alignItems:"center",gap:4}}>
+              {speaking
+                ? <><span style={{display:"flex",gap:2,alignItems:"flex-end"}}>{[3,5,4,6,3].map((h,i)=><span key={i} style={{width:2,height:h,background:C.teal,borderRadius:1,animation:"pulse .6s ease-in-out infinite",animationDelay:`${i*0.1}s`}}/>)}</span> Speaking</>
+                : <>● Active now</>}
+            </div>
           </div>
         </div>
       </div>
