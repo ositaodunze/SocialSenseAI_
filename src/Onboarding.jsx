@@ -314,7 +314,7 @@ export default function Onboarding({ onComplete }) {
 function Screen({ children, progress }) {
   return (
     <div style={{
-      minHeight: "100vh", background: C.bg, padding: "48px 24px 32px",
+      minHeight: "100vh", background: C.bg, padding: "64px 24px 32px",
       fontFamily: "'DM Sans',-apple-system,sans-serif", color: C.white,
       maxWidth: 480, margin: "0 auto",
     }}>
