@@ -38,22 +38,54 @@ function Root() {
   if (!session || !onboarded) return (
     <div style={{
       minHeight: "100vh",
-      background: "#050810",
+      background: "linear-gradient(135deg,#050810 0%,#0a0f1a 50%,#0d0815 100%)",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      fontFamily: "'DM Sans',-apple-system,sans-serif"
+      fontFamily: "'DM Sans',-apple-system,sans-serif",
+      padding: "40px 20px",
     }}>
-      <div style={{
-        width: 375,
-        minHeight: 812,
-        background: "#070B14",
-        borderRadius: 44,
-        border: "3px solid #1E2A45",
-        overflow: "hidden",
-        boxShadow: "0 25px 80px rgba(0,0,0,.6)"
-      }}>
-        <Onboarding onComplete={() => setOnboarded(true)} />
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+      {/* Phone frame */}
+      <div style={{ position: "relative", width: 393, flexShrink: 0 }}>
+        {/* Silent switch */}
+        <div style={{ position: "absolute", left: -3, top: 120, width: 3, height: 32, background: "#3a3a3c", borderRadius: "3px 0 0 3px" }} />
+        {/* Volume up */}
+        <div style={{ position: "absolute", left: -3, top: 172, width: 3, height: 60, background: "#3a3a3c", borderRadius: "3px 0 0 3px" }} />
+        {/* Volume down */}
+        <div style={{ position: "absolute", left: -3, top: 244, width: 3, height: 60, background: "#3a3a3c", borderRadius: "3px 0 0 3px" }} />
+        {/* Power button */}
+        <div style={{ position: "absolute", right: -3, top: 192, width: 3, height: 80, background: "#3a3a3c", borderRadius: "0 3px 3px 0" }} />
+        {/* Outer frame */}
+        <div style={{
+          width: 393, height: 852,
+          background: "linear-gradient(145deg, #2a2a2c, #1c1c1e)",
+          borderRadius: 54,
+          padding: 10,
+          boxShadow: "0 0 0 1px #4a4a4c, 0 40px 120px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.08)",
+          position: "relative",
+        }}>
+          {/* Screen */}
+          <div style={{ width: "100%", height: "100%", background: "#070B14", borderRadius: 46, overflow: "hidden", position: "relative" }}>
+            {/* Dynamic Island */}
+            <div style={{
+              position: "absolute", top: 12, left: "50%", transform: "translateX(-50%)",
+              width: 120, height: 34,
+              background: "#000",
+              borderRadius: 20,
+              zIndex: 50,
+              boxShadow: "0 0 0 1px rgba(255,255,255,.06)",
+              display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+            }}>
+              <div style={{ width: 12, height: 12, borderRadius: 6, background: "#1a1a1a", border: "1px solid #2a2a2a" }} />
+              <div style={{ width: 8, height: 8, borderRadius: 4, background: "#1a1a1a", border: "1px solid #2a2a2a" }} />
+            </div>
+            {/* App content */}
+            <div className="no-scrollbar" style={{ height: "100%", overflowY: "auto", overflowX: "hidden" }}>
+              <Onboarding onComplete={() => setOnboarded(true)} />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
