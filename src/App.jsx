@@ -111,7 +111,7 @@ const Phone = ({ children }) => (
           <div style={{ width: 8, height: 8, borderRadius: 4, background: "#1a1a1a", border: "1px solid #2a2a2a" }} />
         </div>
         {/* App content */}
-        <div style={{ height: "100%", overflowY: "auto", overflowX: "hidden" }}>{children}</div>
+        <div style={{ height: "100%", overflowY: "auto", overflowX: "hidden", scrollbarWidth: "none", msOverflowStyle: "none" }}>{children}</div>
       </div>
     </div>
   </div>

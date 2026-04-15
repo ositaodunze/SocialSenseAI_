@@ -72,7 +72,7 @@ function Root() {
               boxShadow: "0 0 0 1px rgba(255,255,255,.06)",
             }} />
             {/* Content */}
-            <div style={{ height: "100%", overflowY: "auto", overflowX: "hidden" }}>
+            <div style={{ height: "100%", overflowY: "auto", overflowX: "hidden", scrollbarWidth: "none", msOverflowStyle: "none" }}>
               <Onboarding onComplete={() => setOnboarded(true)} />
             </div>
           </div>
