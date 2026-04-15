@@ -38,7 +38,7 @@ function Root() {
   if (!session || !onboarded) return (
     <div style={{
       minHeight: "100vh",
-      background: "linear-gradient(135deg,#050810 0%,#0a0f1a 50%,#0d0815 100%)",
+      background: "#ffffff",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",

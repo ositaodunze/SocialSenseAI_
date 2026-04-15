@@ -191,40 +191,40 @@ function HomeScreen() {
   return (
     <div style={{padding:"0 0 100px"}}>
       <SB/>
-      <div style={{padding:"0 20px",display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:16}}>
+      <div style={{padding:"0 14px",display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:16}}>
         <div>
-          <div style={{fontSize:14,color:C.teal,fontWeight:700,letterSpacing:".1em",textTransform:"uppercase",marginBottom:3}}>Good Morning</div>
-          <div style={{fontSize:44,fontWeight:800,color:C.white,lineHeight:1.0,letterSpacing:"-.5px"}}>Aaron</div>
-          <span style={{fontSize:11,color:C.green,background:`${C.green}15`,padding:"4px 12px",borderRadius:10,fontWeight:600,display:"inline-block",marginTop:8}}><span className="emoji">🔥</span> 1 day streak</span>
+          <div style={{fontSize:15,color:C.teal,fontWeight:700,letterSpacing:".1em",textTransform:"uppercase",marginBottom:3}}>Good Morning</div>
+          <div style={{fontSize:46,fontWeight:800,color:C.white,lineHeight:1.0,letterSpacing:"-.5px"}}>Aaron</div>
+          <span style={{fontSize:13,color:C.green,background:`${C.green}15`,padding:"5px 14px",borderRadius:10,fontWeight:600,display:"inline-block",marginTop:8}}><span className="emoji">🔥</span> 1 day streak</span>
         </div>
         <div style={{width:84,height:84,borderRadius:42,overflow:"hidden",border:`3px solid ${C.teal}`,boxShadow:`0 0 22px ${C.teal}40`,flexShrink:0,marginTop:4}}>
           <img src={PHOTOS.aaron} alt="Aaron" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"}}/>
         </div>
       </div>
-      <div style={{padding:"0 20px"}}>
+      <div style={{padding:"0 14px"}}>
         <div style={{background:C.card,borderRadius:20,padding:"18px 20px",marginBottom:16,border:`1px solid ${C.border}`}}>
           <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:16}}>
-            <span className="emoji" style={{fontSize:16}}>🌅</span>
-            <span style={{fontSize:15,fontWeight:700,color:C.white}}>Daily Check-In</span>
-            <span style={{fontSize:10,color:C.teal,background:`${C.teal}20`,padding:"2px 8px",borderRadius:10,fontWeight:600,marginLeft:"auto"}}>BEGINNER</span>
+            <span className="emoji" style={{fontSize:18}}>🌅</span>
+            <span style={{fontSize:17,fontWeight:700,color:C.white}}>Daily Check-In</span>
+            <span style={{fontSize:11,color:C.teal,background:`${C.teal}20`,padding:"3px 10px",borderRadius:10,fontWeight:600,marginLeft:"auto"}}>BEGINNER</span>
           </div>
-          <div style={{fontSize:14,color:C.text,marginBottom:12}}>How are you feeling today?</div>
+          <div style={{fontSize:15,color:C.text,marginBottom:12}}>How are you feeling today?</div>
           <div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
             {moods.map((m,i)=>(
               <button key={i} onClick={()=>setMood(i)} style={{display:"flex",flexDirection:"column",alignItems:"center",gap:5,padding:"10px 6px",borderRadius:16,cursor:"pointer",border:"none",width:58,background:mood===i?`${C.teal}20`:`${C.bg}80`,transition:"all .2s"}}>
                 <span className="emoji" style={{fontSize:28,filter:mood===i?"none":"grayscale(.5)"}}>{m.e}</span>
-                <span style={{fontSize:10,color:mood===i?C.teal:C.textMuted,fontWeight:600}}>{m.l}</span>
+                <span style={{fontSize:11,color:mood===i?C.teal:C.textMuted,fontWeight:600}}>{m.l}</span>
               </button>
             ))}
           </div>
           {mood!==null&&<div style={{marginTop:12,background:`${C.purple}08`,borderRadius:14,padding:"12px 16px",border:`1px solid ${C.purple}15`}}>
-            <div style={{fontSize:13,color:C.text,lineHeight:1.6,fontStyle:"italic"}}><span className="emoji">✨</span> {aff[mood]}</div>
+            <div style={{fontSize:14,color:C.text,lineHeight:1.6,fontStyle:"italic"}}><span className="emoji">✨</span> {aff[mood]}</div>
           </div>}
         </div>
         <div style={{background:C.card,borderRadius:18,padding:"18px 20px",border:`1px solid ${C.border}`}}>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:14}}>
-            <div style={{fontSize:15,fontWeight:700,color:C.white}}><span className="emoji">🎯</span> Today's Challenge</div>
-            <span style={{fontSize:12,color:C.orange,fontWeight:700}}>340 / 500 XP</span>
+            <div style={{fontSize:17,fontWeight:700,color:C.white}}><span className="emoji">🎯</span> Today's Challenge</div>
+            <span style={{fontSize:13,color:C.orange,fontWeight:700}}>340 / 500 XP</span>
           </div>
           <div style={{width:"100%",height:6,borderRadius:4,background:C.border,marginBottom:14}}>
             <div style={{width:"68%",height:"100%",borderRadius:4,background:`linear-gradient(90deg,${C.teal},${C.green})`}}/>
@@ -232,10 +232,10 @@ function HomeScreen() {
           <div style={{display:"flex",alignItems:"center",gap:14}}>
             <div style={{width:50,height:50,borderRadius:14,background:`${C.purple}20`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><span className="emoji" style={{fontSize:24}}>👋</span></div>
             <div style={{flex:1}}>
-              <div style={{fontSize:14,fontWeight:700,color:C.white}}>Say hi to someone new at lunch</div>
-              <div style={{fontSize:11,color:C.textMuted,marginTop:2}}>Introduce yourself and ask what they're studying</div>
+              <div style={{fontSize:15,fontWeight:700,color:C.white}}>Say hi to someone new at lunch</div>
+              <div style={{fontSize:12,color:C.textMuted,marginTop:2}}>Introduce yourself and ask what they're studying</div>
             </div>
-            <span style={{fontSize:11,color:C.orange,background:`${C.orange}15`,padding:"4px 10px",borderRadius:10,fontWeight:700,flexShrink:0}}>+25 XP</span>
+            <span style={{fontSize:12,color:C.orange,background:`${C.orange}15`,padding:"5px 10px",borderRadius:10,fontWeight:700,flexShrink:0}}>+25 XP</span>
           </div>
         </div>
       </div>
@@ -446,29 +446,29 @@ function MatchScreen({ onNavigate }) {
     <div style={{ padding: "0 20px 100px" }}>
       <SB />
       <div style={{ textAlign: "center", marginTop: 12 }}>
-        <div style={{ fontSize: 13, color: C.teal, fontWeight: 700, textTransform: "uppercase", marginBottom: 10 }}>Match Found</div>
+        <div style={{ fontSize: 14, color: C.teal, fontWeight: 700, textTransform: "uppercase", marginBottom: 10 }}>Match Found</div>
         <PhotoAv src={PHOTOS.aaliyah} size={80} border={C.pink} />
         <div style={{ fontSize: 24, fontWeight: 800, color: C.white, marginTop: 10 }}>Alex</div>
-        <div style={{ fontSize: 13, color: C.textMuted, marginTop: 3 }}>Nursing · Beginner</div>
+        <div style={{ fontSize: 15, color: C.textMuted, marginTop: 3 }}>Nursing · Beginner</div>
       </div>
       <div style={{ marginTop: 16 }}>
-        <div style={{ fontSize: 12, fontWeight: 700, color: C.white, marginBottom: 8 }}>Shared Interests</div>
+        <div style={{ fontSize: 15, fontWeight: 700, color: C.white, marginBottom: 8 }}>Shared Interests</div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           {["Healthcare", "Cooking", "Podcasts", "Self-improvement"].map(i => (
-            <span key={i} style={{ fontSize: 12, color: C.teal, background: `${C.teal}12`, padding: "6px 14px", borderRadius: 12, border: `1px solid ${C.teal}30` }}>{i}</span>
+            <span key={i} style={{ fontSize: 14, color: C.teal, background: `${C.teal}12`, padding: "6px 14px", borderRadius: 12, border: `1px solid ${C.teal}30` }}>{i}</span>
           ))}
         </div>
       </div>
       <div style={{ marginTop: 20 }}>
-        <div style={{ fontSize: 12, fontWeight: 700, color: C.purple, marginBottom: 10 }}>Suggested Starters</div>
+        <div style={{ fontSize: 15, fontWeight: 700, color: C.purple, marginBottom: 10 }}>Suggested Starters</div>
         {['"What podcast are you into right now?"', '"What got you interested in nursing?"', '"Have you tried the food at the Student Center?"'].map((s, i) => (
-          <div key={i} style={{ background: `${C.purple}08`, borderRadius: 14, padding: "12px 16px", marginBottom: 8, border: `1px solid ${C.purple}15` }}>
-            <span style={{ fontSize: 13, color: C.text }}>{s}</span>
+          <div key={i} style={{ background: `${C.purple}08`, borderRadius: 14, padding: "13px 16px", marginBottom: 8, border: `1px solid ${C.purple}15` }}>
+            <span style={{ fontSize: 15, color: C.text }}>{s}</span>
           </div>
         ))}
       </div>
       <button onClick={handleStartConvo} style={{ width: "100%", padding: 16, borderRadius: 16, marginTop: 20, background: `linear-gradient(135deg,${C.teal},${C.tealDark})`, border: "none", cursor: "pointer", fontSize: 16, fontWeight: 700, color: C.bg }}>Start Conversation →</button>
-      <button onClick={() => setPhase("default")} style={{ width: "100%", padding: 14, borderRadius: 16, marginTop: 10, background: "transparent", border: `1px solid ${C.red}40`, cursor: "pointer", fontSize: 13, fontWeight: 600, color: C.red }}>Not Interested · Find Another</button>
+      <button onClick={() => setPhase("default")} style={{ width: "100%", padding: 14, borderRadius: 16, marginTop: 10, background: "transparent", border: `1px solid ${C.red}40`, cursor: "pointer", fontSize: 15, fontWeight: 600, color: C.red }}>Not Interested · Find Another</button>
     </div>
   )
 
@@ -476,7 +476,7 @@ function MatchScreen({ onNavigate }) {
     <div style={{ padding: "0 20px 100px", display: "flex", flexDirection: "column", minHeight: 730 }}>
       <SB />
       <div style={{ fontSize: 24, fontWeight: 800, color: C.white, marginBottom: 4 }}>Find a Match</div>
-      <div style={{ fontSize: 12, color: C.textMuted, marginBottom: 16 }}>You're at a Safe Zone. Start when ready.</div>
+      <div style={{ fontSize: 14, color: C.textMuted, marginBottom: 16 }}>You're at a Safe Zone. Start when ready.</div>
       <div style={{ borderRadius: 18, overflow: "hidden", marginBottom: 16, border: `1px solid ${C.border}` }}>
         {isLoaded ? (
           <GoogleMap
@@ -525,16 +525,16 @@ function MatchScreen({ onNavigate }) {
           </div>
         )}
         <div style={{ padding: "12px 14px", display: "flex", gap: 14, alignItems: "center", background: C.card }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 5 }}><div style={{ width: 10, height: 10, borderRadius: 5, background: "rgba(220,38,38,.55)" }} /><span style={{ fontSize: 11, color: C.text }}>High</span></div>
-          <div style={{ display: "flex", alignItems: "center", gap: 5 }}><div style={{ width: 10, height: 10, borderRadius: 5, background: "rgba(248,113,113,.35)" }} /><span style={{ fontSize: 11, color: C.text }}>Medium</span></div>
-          <div style={{ display: "flex", alignItems: "center", gap: 5 }}><div style={{ width: 10, height: 10, borderRadius: 5, background: C.teal }} /><span style={{ fontSize: 11, color: C.text }}>You</span></div>
+          <div style={{ display: "flex", alignItems: "center", gap: 5 }}><div style={{ width: 10, height: 10, borderRadius: 5, background: "rgba(220,38,38,.55)" }} /><span style={{ fontSize: 13, color: C.text }}>High</span></div>
+          <div style={{ display: "flex", alignItems: "center", gap: 5 }}><div style={{ width: 10, height: 10, borderRadius: 5, background: "rgba(248,113,113,.35)" }} /><span style={{ fontSize: 13, color: C.text }}>Medium</span></div>
+          <div style={{ display: "flex", alignItems: "center", gap: 5 }}><div style={{ width: 10, height: 10, borderRadius: 5, background: C.teal }} /><span style={{ fontSize: 13, color: C.text }}>You</span></div>
         </div>
       </div>
       {["Student Center", "CBEIS Lobby", "Library Commons", "Rec Center"].map((z, i) => (
         <div key={i} style={{ background: i === 0 ? `${C.teal}08` : C.card, borderRadius: 14, padding: "14px 16px", marginBottom: 8, border: `1px solid ${i === 0 ? C.teal + "30" : C.border}`, display: "flex", alignItems: "center", gap: 12 }}>
           <span style={{ fontSize: 18 }}>📍</span>
-          <div style={{ flex: 1 }}><div style={{ fontSize: 14, fontWeight: 700, color: C.white }}>{z}</div><div style={{ fontSize: 11, color: C.textMuted }}>Public · Verified Safe Zone</div></div>
-          {i === 0 && <span style={{ fontSize: 10, color: C.teal, fontWeight: 700, background: `${C.teal}15`, padding: "4px 10px", borderRadius: 8 }}>You're Here</span>}
+          <div style={{ flex: 1 }}><div style={{ fontSize: 15, fontWeight: 700, color: C.white }}>{z}</div><div style={{ fontSize: 13, color: C.textMuted }}>Public · Verified Safe Zone</div></div>
+          {i === 0 && <span style={{ fontSize: 13, color: C.teal, fontWeight: 700, background: `${C.teal}15`, padding: "5px 10px", borderRadius: 8 }}>You're Here</span>}
         </div>
       ))}
       <div style={{ flex: 1, minHeight: 10 }} />
@@ -597,7 +597,7 @@ function CoachScreen(){
 
   return (
     <div style={{display:"flex",flexDirection:"column",height:"100%",background:C.bg}}>
-      <div style={{padding:"0 20px",flexShrink:0}}>
+      <div style={{padding:"0 14px",flexShrink:0}}>
         <SB/>
         <div style={{display:"flex",alignItems:"center",gap:10,paddingBottom:12,borderBottom:`1px solid ${C.border}30`}}>
           <div style={{width:36,height:36,borderRadius:18,background:`linear-gradient(135deg,${C.teal}30,${C.purple}30)`,border:`1.5px solid ${speaking?C.teal:"rgba(6,214,160,.4)"}`,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,boxShadow:speaking?`0 0 12px ${C.teal}60`:"none",transition:"all .3s"}}>
@@ -687,31 +687,31 @@ function FriendsScreen(){
     {n:"Devon",r:"Shared: Entrepreneurship, Tech",s:84,photo:PHOTOS.devon,border:C.orange},
   ];
   return (
-    <div style={{padding:"0 20px 100px"}}>
+    <div style={{padding:"0 14px 100px"}}>
       <SB/>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
         <div style={{fontSize:22,fontWeight:800,color:C.white}}>Friends</div>
-        <span style={{fontSize:12,color:C.teal,fontWeight:600}}>{friends.length} connections</span>
+        <span style={{fontSize:14,color:C.teal,fontWeight:600}}>{friends.length} connections</span>
       </div>
       <div style={{background:`${C.orange}08`,borderRadius:14,padding:14,border:`1px solid ${C.orange}20`,display:"flex",alignItems:"center",gap:12,marginBottom:16}}>
         <PhotoAv src={PHOTOS.tyler} size={44} border={C.orange}/>
-        <div style={{flex:1}}><div style={{fontSize:14,fontWeight:700,color:C.white}}>Tyler</div><div style={{fontSize:10,color:C.textMuted}}>Great convo at Student Center</div></div>
-        <button style={{padding:"6px 14px",borderRadius:10,background:`${C.teal}20`,border:`1px solid ${C.teal}30`,cursor:"pointer",fontSize:11,fontWeight:700,color:C.teal}}>Accept</button>
+        <div style={{flex:1}}><div style={{fontSize:15,fontWeight:700,color:C.white}}>Tyler</div><div style={{fontSize:13,color:C.textMuted}}>Great convo at Student Center</div></div>
+        <button style={{padding:"8px 16px",borderRadius:10,background:`${C.teal}20`,border:`1px solid ${C.teal}30`,cursor:"pointer",fontSize:13,fontWeight:700,color:C.teal}}>Accept</button>
       </div>
-      <div style={{fontSize:11,color:C.textMuted,fontWeight:700,textTransform:"uppercase",marginBottom:8}}>Your Friends</div>
+      <div style={{fontSize:13,color:C.textMuted,fontWeight:700,textTransform:"uppercase",marginBottom:8}}>Your Friends</div>
       {friends.map((f,i)=>(
         <div key={i} style={{background:C.card,borderRadius:14,padding:14,marginBottom:8,border:`1px solid ${C.border}`,display:"flex",alignItems:"center",gap:12}}>
           <PhotoAv src={f.photo} size={44} border={f.border}/>
-          <div style={{flex:1}}><div style={{fontSize:14,fontWeight:700,color:C.white}}>{f.n}</div><div style={{fontSize:10,color:C.textMuted}}>{f.c} convos · {f.l}</div></div>
-          <button style={{padding:"6px 12px",borderRadius:10,background:`${C.teal}12`,border:`1px solid ${C.teal}20`,cursor:"pointer",fontSize:10,fontWeight:600,color:C.teal}}>Chat</button>
+          <div style={{flex:1}}><div style={{fontSize:15,fontWeight:700,color:C.white}}>{f.n}</div><div style={{fontSize:13,color:C.textMuted}}>{f.c} convos · {f.l}</div></div>
+          <button style={{padding:"8px 14px",borderRadius:10,background:`${C.teal}12`,border:`1px solid ${C.teal}20`,cursor:"pointer",fontSize:13,fontWeight:600,color:C.teal}}>Chat</button>
         </div>
       ))}
-      <div style={{fontSize:11,color:C.purple,fontWeight:700,textTransform:"uppercase",marginTop:16,marginBottom:8}}>Suggested</div>
+      <div style={{fontSize:13,color:C.purple,fontWeight:700,textTransform:"uppercase",marginTop:16,marginBottom:8}}>Suggested</div>
       {suggested.map((s,i)=>(
         <div key={i} style={{background:C.card,borderRadius:14,padding:14,marginBottom:8,border:`1px solid ${C.border}`,display:"flex",alignItems:"center",gap:12}}>
           <PhotoAv src={s.photo} size={44} border={s.border}/>
-          <div style={{flex:1}}><div style={{fontSize:14,fontWeight:700,color:C.white}}>{s.n}</div><div style={{fontSize:10,color:C.textMuted}}>{s.r}</div></div>
-          <div style={{fontSize:14,fontWeight:800,color:C.purple}}>{s.s}%</div>
+          <div style={{flex:1}}><div style={{fontSize:15,fontWeight:700,color:C.white}}>{s.n}</div><div style={{fontSize:13,color:C.textMuted}}>{s.r}</div></div>
+          <div style={{fontSize:15,fontWeight:800,color:C.purple}}>{s.s}%</div>
         </div>
       ))}
     </div>
@@ -767,7 +767,7 @@ function ReviewScreen() {
   ]
 
   if (loading) return (
-    <div style={{padding:"0 20px",display:"flex",alignItems:"center",justifyContent:"center",height:400}}>
+    <div style={{padding:"0 14px",display:"flex",alignItems:"center",justifyContent:"center",height:400}}>
       <div style={{fontSize:13,color:C.textMuted}}>Loading...</div>
     </div>
   )
@@ -780,11 +780,11 @@ function ReviewScreen() {
   const shown = full ? lines : lines.slice(0,3)
 
   return (
-    <div style={{padding:"0 20px 100px"}}>
+    <div style={{padding:"0 14px 100px"}}>
       <SB/>
       <div style={{marginBottom:14}}>
         <div style={{fontSize:22,fontWeight:800,color:C.white}}>Conversation Review</div>
-        <div style={{fontSize:11,color:C.textMuted}}>
+        <div style={{fontSize:14,color:C.textMuted}}>
           {convo ? `${duration} · ${new Date(convo.created_at).toLocaleDateString()} · ${convo.location || "Student Center"}` : "With Alex · 12 min · Feb 14"}
         </div>
       </div>
@@ -793,32 +793,32 @@ function ReviewScreen() {
       <div style={{background:sent?`${C.green}10`:`linear-gradient(135deg,${C.pink}10,${C.purple}08)`,borderRadius:16,padding:14,marginBottom:14,border:`1px solid ${sent?C.green+"25":C.pink+"20"}`,display:"flex",alignItems:"center",gap:12}}>
         <PhotoAv src={PHOTOS.aaliyah} size={44} border={C.pink}/>
         <div style={{flex:1}}>
-          <div style={{fontSize:13,fontWeight:700,color:C.white}}>Enjoyed talking to Alex?</div>
-          <div style={{fontSize:10,color:C.textMuted}}>Add as a friend to chat again</div>
+          <div style={{fontSize:15,fontWeight:700,color:C.white}}>Enjoyed talking to Alex?</div>
+          <div style={{fontSize:13,color:C.textMuted}}>Add as a friend to chat again</div>
         </div>
-        <button onClick={()=>setSent(true)} style={{padding:"8px 14px",borderRadius:12,cursor:"pointer",border:"none",background:sent?`${C.green}20`:`linear-gradient(135deg,${C.pink},${C.purple})`,fontSize:11,fontWeight:700,color:sent?C.green:C.white}}>
+        <button onClick={()=>setSent(true)} style={{padding:"9px 16px",borderRadius:12,cursor:"pointer",border:"none",background:sent?`${C.green}20`:`linear-gradient(135deg,${C.pink},${C.purple})`,fontSize:13,fontWeight:700,color:sent?C.green:C.white}}>
           {sent?"✓ Sent!":"Add Friend"}
         </button>
       </div>
 
       {/* Biometrics */}
       <div style={{background:C.card,borderRadius:16,padding:14,marginBottom:12,border:`1px solid ${C.border}`}}>
-        <div style={{fontSize:12,fontWeight:700,color:C.white,marginBottom:10}}>Biometrics</div>
+        <div style={{fontSize:15,fontWeight:700,color:C.white,marginBottom:10}}>Biometrics</div>
         <div style={{display:"flex",gap:10,marginBottom:10}}>
           <div style={{flex:1,background:`${C.orange}10`,borderRadius:12,padding:10,textAlign:"center",border:`1px solid ${C.orange}25`}}>
-            <div style={{fontSize:9,color:C.textMuted}}>Start HR</div>
+            <div style={{fontSize:12,color:C.textMuted}}>Start HR</div>
             <div style={{fontSize:18,fontWeight:800,color:C.orange}}>{startHR}</div>
-            <div style={{fontSize:8,color:C.textMuted}}>bpm</div>
+            <div style={{fontSize:12,color:C.textMuted}}>bpm</div>
           </div>
           <div style={{flex:1,background:`${C.teal}10`,borderRadius:12,padding:10,textAlign:"center",border:`1px solid ${C.teal}25`}}>
-            <div style={{fontSize:9,color:C.textMuted}}>End HR</div>
+            <div style={{fontSize:12,color:C.textMuted}}>End HR</div>
             <div style={{fontSize:18,fontWeight:800,color:C.teal}}>{endHR}</div>
-            <div style={{fontSize:8,color:C.textMuted}}>bpm</div>
+            <div style={{fontSize:12,color:C.textMuted}}>bpm</div>
           </div>
           <div style={{flex:1,background:`${C.pink}10`,borderRadius:12,padding:10,textAlign:"center",border:`1px solid ${C.pink}25`}}>
-            <div style={{fontSize:9,color:C.textMuted}}>Avg HR</div>
+            <div style={{fontSize:12,color:C.textMuted}}>Avg HR</div>
             <div style={{fontSize:18,fontWeight:800,color:C.pink}}>{convo?.avg_heart_rate||74}</div>
-            <div style={{fontSize:8,color:C.textMuted}}>bpm</div>
+            <div style={{fontSize:12,color:C.textMuted}}>bpm</div>
           </div>
         </div>
         <div style={{height:44,display:"flex",alignItems:"flex-end",gap:2}}>
@@ -827,8 +827,8 @@ function ReviewScreen() {
           ))}
         </div>
         <div style={{display:"flex",justifyContent:"space-between",marginTop:4}}>
-          <span style={{fontSize:8,color:C.orange}}>Nervous start</span>
-          <span style={{fontSize:8,color:C.teal}}>Relaxed by end ✓</span>
+          <span style={{fontSize:12,color:C.orange}}>Nervous start</span>
+          <span style={{fontSize:12,color:C.teal}}>Relaxed by end ✓</span>
         </div>
       </div>
 
@@ -843,10 +843,10 @@ function ReviewScreen() {
             }
           </button>
           <div style={{flex:1}}>
-            <div style={{fontSize:12,fontWeight:700,color:C.white}}>Recording · {convo?new Date(convo.created_at).toLocaleDateString():"Feb 14"}</div>
-            <div style={{fontSize:10,color:C.textMuted}}>{duration} · Student Center</div>
+            <div style={{fontSize:14,fontWeight:700,color:C.white}}>Recording · {convo?new Date(convo.created_at).toLocaleDateString():"Feb 14"}</div>
+            <div style={{fontSize:13,color:C.textMuted}}>{duration} · Student Center</div>
           </div>
-          <span style={{fontSize:10,color:C.textMuted,fontFamily:"monospace"}}>{duration}</span>
+          <span style={{fontSize:13,color:C.textMuted,fontFamily:"monospace"}}>{duration}</span>
         </div>
         <div style={{height:40,display:"flex",alignItems:"center",gap:1,overflow:"hidden"}}>
           {[3,8,14,22,18,30,26,38,32,44,40,50,46,38,42,34,28,36,24,18,30,22,16,28,20,14,24,18,10,16,22,28,34,40,36,30,24,18,26,20,14,18,24,30,22,16,12,18,14,10].map((h,i)=>(
@@ -863,15 +863,15 @@ function ReviewScreen() {
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}>
           <div style={{display:"flex",alignItems:"center",gap:6}}>
             <span style={{fontSize:11}}>🥽</span>
-            <span style={{fontSize:12,fontWeight:700,color:C.white}}>AR Replay</span>
+            <span style={{fontSize:14,fontWeight:700,color:C.white}}>AR Replay</span>
           </div>
-          <span style={{fontSize:9,color:C.purple,fontWeight:700,background:`${C.purple}20`,padding:"2px 8px",borderRadius:8}}>BETA</span>
+          <span style={{fontSize:12,color:C.purple,fontWeight:700,background:`${C.purple}20`,padding:"3px 10px",borderRadius:8}}>BETA</span>
         </div>
         <div style={{height:140,borderRadius:12,position:"relative",overflow:"hidden",border:`1px solid ${C.purple}30`}}>
           <img src={PHOTOS.aaliyah} alt="AR view" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top center"}}/>
           <div style={{position:"absolute",inset:0,background:"linear-gradient(to bottom,rgba(6,5,20,.05),rgba(6,5,20,.55))"}}/>
           <div style={{position:"absolute",top:8,right:10,background:"rgba(0,0,0,.5)",backdropFilter:"blur(4px)",borderRadius:8,padding:"4px 8px"}}>
-            <span style={{fontSize:8,color:C.teal,fontWeight:700,letterSpacing:".05em"}}>AR MODE</span>
+            <span style={{fontSize:11,color:C.teal,fontWeight:700,letterSpacing:".05em"}}>AR MODE</span>
           </div>
           <div style={{position:"absolute",bottom:8,left:10,right:10,display:"flex",alignItems:"center",gap:8}}>
             <div style={{width:26,height:26,borderRadius:13,overflow:"hidden",border:`1.5px solid ${C.teal}`,flexShrink:0}}>
@@ -883,33 +883,33 @@ function ReviewScreen() {
             <span style={{fontSize:9,color:"rgba(255,255,255,.7)",fontFamily:"monospace"}}>/ {duration}</span>
           </div>
         </div>
-        <div style={{fontSize:10,color:C.textMuted,marginTop:8,textAlign:"center"}}>Tap to enter AR view · Replay conversation in your space</div>
+        <div style={{fontSize:13,color:C.textMuted,marginTop:8,textAlign:"center"}}>Tap to enter AR view · Replay conversation in your space</div>
       </div>
 
       {/* Hardcoded Transcript */}
       <div style={{background:C.card,borderRadius:16,padding:14,marginBottom:10,border:`1px solid ${C.border}`}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
-          <div style={{fontSize:12,fontWeight:700,color:C.white}}>Transcript</div>
-          <span style={{fontSize:10,color:C.teal,fontWeight:600}}>12:03</span>
+          <div style={{fontSize:15,fontWeight:700,color:C.white}}>Transcript</div>
+          <span style={{fontSize:13,color:C.teal,fontWeight:600}}>12:03</span>
         </div>
         {shown.map((l,i)=>(
-          <div key={i} style={{padding:"7px 0",borderTop:i>0?`1px solid ${C.border}40`:"none"}}>
+          <div key={i} style={{padding:"9px 0",borderTop:i>0?`1px solid ${C.border}40`:"none"}}>
             <div style={{display:"flex",gap:8,alignItems:"baseline"}}>
-              <span style={{fontSize:9,color:C.textMuted,fontFamily:"monospace",width:28,flexShrink:0}}>{l.time}</span>
-              <span style={{fontSize:10,fontWeight:700,color:l.who==="Aaron"?C.teal:C.blue,width:48,flexShrink:0}}>{l.who}</span>
-              <span style={{fontSize:11,color:C.text,lineHeight:1.5}}>{l.text}</span>
+              <span style={{fontSize:12,color:C.textMuted,fontFamily:"monospace",width:32,flexShrink:0}}>{l.time}</span>
+              <span style={{fontSize:13,fontWeight:700,color:l.who==="Aaron"?C.teal:C.blue,width:52,flexShrink:0}}>{l.who}</span>
+              <span style={{fontSize:14,color:C.text,lineHeight:1.5}}>{l.text}</span>
             </div>
           </div>
         ))}
-        <button onClick={()=>setFull(!full)} style={{width:"100%",padding:9,borderRadius:10,marginTop:8,background:`${C.teal}08`,border:`1px solid ${C.teal}20`,cursor:"pointer",fontSize:11,fontWeight:600,color:C.teal}}>
+        <button onClick={()=>setFull(!full)} style={{width:"100%",padding:11,borderRadius:10,marginTop:8,background:`${C.teal}08`,border:`1px solid ${C.teal}20`,cursor:"pointer",fontSize:13,fontWeight:600,color:C.teal}}>
           {full?"▲ Show less":"▼ View full transcript"}
         </button>
       </div>
 
       {/* Topics */}
       <div style={{background:C.card2,borderRadius:12,padding:"9px 14px",border:`1px solid ${C.border}`,display:"flex",alignItems:"center",gap:8,flexWrap:"nowrap",overflow:"hidden"}}>
-        <span style={{fontSize:11,color:C.textMuted,fontWeight:600,flexShrink:0}}>Topics:</span>
-        <span style={{fontSize:11,color:C.text,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>Nursing · Podcasts · Cooking · Entrepreneurship · Family</span>
+        <span style={{fontSize:13,color:C.textMuted,fontWeight:600,flexShrink:0}}>Topics:</span>
+        <span style={{fontSize:13,color:C.text,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>Nursing · Podcasts · Cooking · Entrepreneurship · Family</span>
       </div>
     </div>
   )
@@ -945,45 +945,45 @@ function TopicTags({ transcript }) {
 
 function ProfileScreen({onSettings}){
   return (
-    <div style={{padding:"0 20px 100px"}}>
+    <div style={{padding:"0 14px 100px"}}>
       <SB/>
       <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:16,position:"relative",zIndex:2}}>
         <div style={{width:62,height:62,borderRadius:31,overflow:"hidden",border:`2.5px solid ${C.teal}`,boxShadow:`0 0 16px ${C.teal}30`}}>
           <img src={PHOTOS.aaron} alt="Aaron" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"}}/>
         </div>
         <div style={{display:"flex",gap:8}}>
-          <button onClick={onSettings} style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:12,padding:"8px 14px",cursor:"pointer",fontSize:11,fontWeight:600,color:C.textMuted}}>⚙ Settings</button>
-          <button onClick={()=>supabase.auth.signOut()} style={{background:"transparent",border:`1px solid ${C.red}40`,borderRadius:12,padding:"8px 14px",cursor:"pointer",fontSize:11,fontWeight:600,color:C.red}}>Sign Out</button>
+          <button onClick={onSettings} style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:12,padding:"9px 16px",cursor:"pointer",fontSize:13,fontWeight:600,color:C.textMuted}}>⚙ Settings</button>
+          <button onClick={()=>supabase.auth.signOut()} style={{background:"transparent",border:`1px solid ${C.red}40`,borderRadius:12,padding:"9px 16px",cursor:"pointer",fontSize:13,fontWeight:600,color:C.red}}>Sign Out</button>
         </div>
       </div>
       <div style={{textAlign:"center",marginTop:0}}>
         <div style={{fontSize:22,fontWeight:800,color:C.white,marginBottom:2}}>Aaron</div>
-        <div style={{fontSize:12,color:C.textMuted}}>Morgan State · Business · 19</div>
-        <div style={{display:"inline-flex",marginTop:8,padding:"4px 16px",borderRadius:20,background:`${C.green}15`,border:`1px solid ${C.green}25`}}>
-          <span style={{fontSize:12,fontWeight:700,color:C.green}}>BEGINNER — 340 / 500 XP</span>
+        <div style={{fontSize:14,color:C.textMuted}}>Morgan State · Business · 19</div>
+        <div style={{display:"inline-flex",marginTop:8,padding:"5px 16px",borderRadius:20,background:`${C.green}15`,border:`1px solid ${C.green}25`}}>
+          <span style={{fontSize:14,fontWeight:700,color:C.green}}>BEGINNER — 340 / 500 XP</span>
         </div>
         <div style={{width:"60%",height:4,borderRadius:2,background:C.border,margin:"8px auto 0"}}>
           <div style={{width:"68%",height:"100%",borderRadius:2,background:`linear-gradient(90deg,${C.teal},${C.green})`}}/>
         </div>
       </div>
       <div style={{background:C.card,borderRadius:16,padding:14,marginTop:16,border:`1px solid ${C.border}`}}>
-        <div style={{fontSize:12,fontWeight:700,color:C.white,marginBottom:10}}>Social Growth — 30 Days</div>
+        <div style={{fontSize:15,fontWeight:700,color:C.white,marginBottom:10}}>Social Growth — 30 Days</div>
         <div style={{height:80,display:"flex",alignItems:"flex-end",gap:2}}>
           {[20,25,22,30,28,35,32,40,38,45,42,48,50,55,52,58,55,60,62,58,65,68,64,70,72,68,75,78,74,80].map((v,i)=>(
             <div key={i} style={{flex:1,height:`${v}%`,borderRadius:2,background:`linear-gradient(to top,${C.teal}60,${C.teal})`}}/>
           ))}
         </div>
         <div style={{display:"flex",justifyContent:"space-between",marginTop:4}}>
-          <span style={{fontSize:9,color:C.textMuted}}>Jan 15</span>
-          <span style={{fontSize:9,color:C.teal,fontWeight:600}}>↑ 60% improvement</span>
-          <span style={{fontSize:9,color:C.textMuted}}>Feb 14</span>
+          <span style={{fontSize:12,color:C.textMuted}}>Jan 15</span>
+          <span style={{fontSize:12,color:C.teal,fontWeight:600}}>↑ 60% improvement</span>
+          <span style={{fontSize:12,color:C.textMuted}}>Feb 14</span>
         </div>
       </div>
       <div style={{background:C.card,borderRadius:16,padding:14,marginTop:12,border:`1px solid ${C.border}`}}>
-        <div style={{fontSize:12,fontWeight:700,color:C.white,marginBottom:8}}>Interests</div>
+        <div style={{fontSize:15,fontWeight:700,color:C.white,marginBottom:8}}>Interests</div>
         <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
           {["Entrepreneurship","Leadership","Podcasts","Basketball","Cooking","Tech"].map(item=>(
-            <span key={item} style={{fontSize:11,color:C.teal,background:`${C.teal}10`,padding:"4px 12px",borderRadius:10,border:`1px solid ${C.teal}30`}}>{item}</span>
+            <span key={item} style={{fontSize:13,color:C.teal,background:`${C.teal}10`,padding:"5px 12px",borderRadius:10,border:`1px solid ${C.teal}30`}}>{item}</span>
           ))}
         </div>
       </div>
@@ -993,7 +993,7 @@ function ProfileScreen({onSettings}){
 
 const Row = ({ title, children }) => (
   <div style={{ marginBottom: 18 }}>
-    <div style={{ fontSize: 10, fontWeight: 700, color: C.textMuted, letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 8 }}>{title}</div>
+    <div style={{ fontSize: 13, fontWeight: 700, color: C.textMuted, letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 8 }}>{title}</div>
     <div style={{ background: C.card, borderRadius: 14, padding: "4px 16px", border: `1px solid ${C.border}` }}>{children}</div>
   </div>
 );
@@ -1005,7 +1005,7 @@ function SettingsScreen({ onBack }) {
   const [notifs, setNotifs] = useState(true);
   const [subs, setSubs] = useState(true);
   return (
-    <div style={{padding:"0 20px 100px"}}>
+    <div style={{padding:"0 14px 100px"}}>
       <SB/>
       <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:20}}>
         <button onClick={onBack} style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:10,padding:"6px 12px",cursor:"pointer",color:C.white,fontSize:14}}>←</button>
@@ -1063,7 +1063,7 @@ export default function SocialSensePrototype(){
   return (
     <>
       <style>{css}</style>
-      <div style={{minHeight:"100vh",background:"linear-gradient(135deg,#050810 0%,#0a0f1a 50%,#0d0815 100%)",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"40px 20px",fontFamily:"'DM Sans',-apple-system,sans-serif"}}>
+      <div style={{minHeight:"100vh",background:"#ffffff",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"40px 20px",fontFamily:"'DM Sans',-apple-system,sans-serif"}}>
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
         <div style={{textAlign:"center",marginBottom:28}}>
           <div style={{fontSize:11,fontWeight:700,color:C.teal,letterSpacing:".2em",textTransform:"uppercase"}}>SocialSense AI</div>

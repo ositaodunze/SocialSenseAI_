@@ -76,12 +76,12 @@ export default function Onboarding({ onComplete }) {
 
   const Btn = ({ label, active, onClick, small }) => (
     <button onClick={onClick} style={{
-      padding: small ? "8px 14px" : "12px 18px",
+      padding: small ? "10px 16px" : "14px 20px",
       borderRadius: 12,
       border: `1px solid ${active ? C.teal : C.border}`,
       background: active ? `${C.teal}18` : "transparent",
       color: active ? C.teal : C.textMuted,
-      fontSize: small ? 12 : 13,
+      fontSize: small ? 13 : 15,
       fontWeight: 600,
       cursor: "pointer",
       transition: "all .15s",
@@ -91,20 +91,20 @@ export default function Onboarding({ onComplete }) {
 
   const Next = ({ onClick, disabled }) => (
     <button onClick={onClick} disabled={disabled} style={{
-      width: "100%", padding: 16, borderRadius: 16,
+      width: "100%", padding: 18, borderRadius: 16,
       background: disabled ? C.border : `linear-gradient(135deg,${C.teal},${C.tealDark})`,
       border: "none", cursor: disabled ? "not-allowed" : "pointer",
-      fontSize: 16, fontWeight: 700,
+      fontSize: 18, fontWeight: 700,
       color: disabled ? C.textMuted : C.bg,
       marginTop: 24, fontFamily: "inherit",
     }}>Continue →</button>
   );
 
   const Label = ({ children }) => (
-    <div style={{ fontSize: 22, fontWeight: 800, color: C.white, marginBottom: 8, lineHeight: 1.3 }}>{children}</div>
+    <div style={{ fontSize: 25, fontWeight: 800, color: C.white, marginBottom: 10, lineHeight: 1.3 }}>{children}</div>
   );
   const Sub = ({ children }) => (
-    <div style={{ fontSize: 13, color: C.textMuted, marginBottom: 24, lineHeight: 1.6 }}>{children}</div>
+    <div style={{ fontSize: 15, color: C.textMuted, marginBottom: 24, lineHeight: 1.6 }}>{children}</div>
   );
 
   // ── Step 0: Auth ──
@@ -112,8 +112,8 @@ export default function Onboarding({ onComplete }) {
     <Screen>
       <div style={{ textAlign: "center", marginBottom: 32 }}>
         <div className="emoji" style={{ fontSize: 32 }}>🧠</div>
-        <div style={{ fontSize: 26, fontWeight: 800, color: C.white, marginTop: 8 }}>SocialSense AI</div>
-        <div style={{ fontSize: 13, color: C.textMuted, marginTop: 4 }}>Build real social confidence</div>
+        <div style={{ fontSize: 30, fontWeight: 800, color: C.white, marginTop: 8 }}>SocialSense AI</div>
+        <div style={{ fontSize: 15, color: C.textMuted, marginTop: 4 }}>Build real social confidence</div>
       </div>
 
       <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
@@ -123,7 +123,7 @@ export default function Onboarding({ onComplete }) {
             background: isLogin === (i === 1) ? `${C.teal}18` : "transparent",
             border: `1px solid ${isLogin === (i === 1) ? C.teal : C.border}`,
             color: isLogin === (i === 1) ? C.teal : C.textMuted,
-            fontSize: 14, fontWeight: 700, cursor: "pointer",
+            fontSize: 16, fontWeight: 700, cursor: "pointer",
           }}>{l}</button>
         ))}
       </div>
@@ -135,9 +135,9 @@ export default function Onboarding({ onComplete }) {
       {error && <div style={{ color: C.red, fontSize: 12, marginTop: 8 }}>{error}</div>}
 
       <button onClick={handleAuth} disabled={loading} style={{
-        width: "100%", padding: 16, borderRadius: 16, marginTop: 20,
+        width: "100%", padding: 18, borderRadius: 16, marginTop: 20,
         background: `linear-gradient(135deg,${C.teal},${C.tealDark})`,
-        border: "none", cursor: "pointer", fontSize: 16, fontWeight: 700,
+        border: "none", cursor: "pointer", fontSize: 18, fontWeight: 700,
         color: C.bg, fontFamily: "inherit",
       }}>{loading ? "Loading..." : isLogin ? "Log In" : "Create Account"}</button>
     </Screen>
@@ -290,10 +290,10 @@ export default function Onboarding({ onComplete }) {
       {error && <div style={{ color: C.red, fontSize: 12, marginTop: 8 }}>{error}</div>}
 
       <button onClick={handleFinish} disabled={loading || !answers.help_goal} style={{
-        width: "100%", padding: 16, borderRadius: 16, marginTop: 24,
+        width: "100%", padding: 18, borderRadius: 16, marginTop: 24,
         background: !answers.help_goal ? C.border : `linear-gradient(135deg,${C.teal},${C.tealDark})`,
         border: "none", cursor: !answers.help_goal ? "not-allowed" : "pointer",
-        fontSize: 16, fontWeight: 700,
+        fontSize: 18, fontWeight: 700,
         color: !answers.help_goal ? C.textMuted : C.bg, fontFamily: "inherit",
       }}>{loading ? "Saving..." : "Let's Go"}</button>
     </Screen>
@@ -307,7 +307,7 @@ export default function Onboarding({ onComplete }) {
 function Screen({ children, progress }) {
   return (
     <div style={{
-      minHeight: "100vh", background: C.bg, padding: "62px 24px 32px",
+      minHeight: "100vh", background: C.bg, padding: "62px 14px 32px",
       fontFamily: "'DM Sans',-apple-system,sans-serif", color: C.white,
       maxWidth: 480, margin: "0 auto",
     }}>
@@ -330,22 +330,22 @@ function Screen({ children, progress }) {
 function OptionRow({ label, active, onClick, checkbox }) {
   return (
     <button onClick={onClick} style={{
-      display: "flex", alignItems: "center", gap: 12,
-      padding: "14px 16px", borderRadius: 14,
+      display: "flex", alignItems: "center", gap: 14,
+      padding: "17px 16px", borderRadius: 14,
       border: `1px solid ${active ? C.teal : C.border}`,
       background: active ? `${C.teal}10` : "transparent",
       cursor: "pointer", textAlign: "left", fontFamily: "inherit", width: "100%",
     }}>
       <div style={{
-        width: 20, height: 20, borderRadius: checkbox ? 6 : 10,
+        width: 22, height: 22, borderRadius: checkbox ? 6 : 11,
         border: `2px solid ${active ? C.teal : C.border}`,
         background: active ? C.teal : "transparent",
         display: "flex", alignItems: "center", justifyContent: "center",
         flexShrink: 0, transition: "all .15s",
       }}>
-        {active && <span style={{ fontSize: 11, color: C.bg, fontWeight: 800 }}>✓</span>}
+        {active && <span style={{ fontSize: 13, color: C.bg, fontWeight: 800 }}>✓</span>}
       </div>
-      <span style={{ fontSize: 13, color: active ? C.white : C.text, fontWeight: active ? 600 : 400 }}>{label}</span>
+      <span style={{ fontSize: 15, color: active ? C.white : C.text, fontWeight: active ? 600 : 400 }}>{label}</span>
     </button>
   );
 }
@@ -353,12 +353,12 @@ function OptionRow({ label, active, onClick, checkbox }) {
 function Input({ label, value, onChange, placeholder, type = "text" }) {
   return (
     <div style={{ marginBottom: 16 }}>
-      <div style={{ fontSize: 12, fontWeight: 700, color: C.textMuted, marginBottom: 6, textTransform: "uppercase", letterSpacing: ".05em" }}>{label}</div>
+      <div style={{ fontSize: 13, fontWeight: 700, color: C.textMuted, marginBottom: 6, textTransform: "uppercase", letterSpacing: ".05em" }}>{label}</div>
       <input value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} type={type}
         style={{
-          width: "100%", padding: "14px 16px", borderRadius: 14,
+          width: "100%", padding: "16px 16px", borderRadius: 14,
           background: C.card, border: `1px solid ${C.border}`,
-          color: C.white, fontSize: 14, outline: "none",
+          color: C.white, fontSize: 16, outline: "none",
           fontFamily: "inherit", boxSizing: "border-box",
         }} />
     </div>
