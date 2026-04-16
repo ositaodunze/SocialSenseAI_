@@ -75,6 +75,11 @@ html {
   display: none;
 }
 
+/* Consistent box model — must be global so layout is identical before and after onboarding */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Force Apple-style emoji rendering across all platforms */
 * {
   font-variant-emoji: emoji;

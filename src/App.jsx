@@ -29,7 +29,7 @@ const C = {
 
 const css = `
   *::-webkit-scrollbar{display:none;}
-  *{-ms-overflow-style:none;scrollbar-width:none;box-sizing:border-box;}
+  *{-ms-overflow-style:none;scrollbar-width:none;}
   @keyframes pulse{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
   @keyframes fade-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
   .msg-in{animation:fade-in .3s ease forwards;}

@@ -101,7 +101,7 @@ export default function Onboarding({ onComplete }) {
   );
 
   const Label = ({ children }) => (
-    <div style={{ fontSize: 25, fontWeight: 800, color: C.white, marginBottom: 10, lineHeight: 1.3 }}>{children}</div>
+    <div style={{ fontSize: 25, fontWeight: 800, color: C.white, marginBottom: 10, lineHeight: 1.3, textAlign: "center" }}>{children}</div>
   );
   const Sub = ({ children }) => (
     <div style={{ fontSize: 15, color: C.textMuted, marginBottom: 24, lineHeight: 1.6 }}>{children}</div>
